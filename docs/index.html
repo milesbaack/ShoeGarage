@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shoe Garage — Shoe Mileage Tracker for Serious Runners</title>
+  <meta name="description" content="Automatic Apple Health mileage tracking, lock screen workout assignment, and predictive retirement analytics for your running shoe rotation.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👟</text></svg>">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="logo">
+        <img src="app_icon.png" alt="Shoe Garage App Icon" style="width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--border);">
+        <span>Shoe Garage</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#support">Support</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <img src="app_icon.png" alt="Shoe Garage App Icon" style="width: 120px; height: 120px; border-radius: 28px; box-shadow: 0 12px 40px rgba(212, 255, 0, 0.25); border: 1px solid var(--border); margin-bottom: 24px;">
+      <div class="badge">Designed for iOS & Apple Health</div>
+      <h1>The High-Performance Shoe Tracker for <span class="gradient">Serious Runners</span></h1>
+      <p>Passively sync Apple Health workouts. Assign mileage directly from interactive lock screen notifications. Forecast foam breakdown before injury strikes.</p>
+      
+      <div class="cta-group">
+        <a href="#features" class="btn-primary">
+          <span>Explore Features</span>
+          <span>→</span>
+        </a>
+        <a href="#support" class="btn-secondary">
+          <span>Support & Help</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section id="features" class="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Engineered for Your Quiver</h2>
+        <p>Everything you need to master your rotation and protect your joints.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3>Passive Apple Health Sync</h3>
+          <p>Never manually log miles again. Shoe Garage uses native background observers to detect finished runs and walks directly from your Apple Watch with zero battery drain.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🎯</div>
+          <h3>1-Tap Lock Screen Assign</h3>
+          <p>Finish your workout, glance at your lock screen, and assign mileage with a single tap on interactive push notifications without even opening the app.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">📊</div>
+          <h3>Predictive Retirement Projections</h3>
+          <p>Real-time telemetry algorithms analyze your 30-day wear velocity to project exact calendar retirement dates and warn you when foam reaches critical wear.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">💰</div>
+          <h3>Cost-Per-Mile Intelligence</h3>
+          <p>Track your gear ROI with real-time cost-per-mile calculations, lifetime career mileage, and financial rotation analytics across your entire shoe quiver.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">📸</div>
+          <h3>Real Shoe Photos & Spec Cards</h3>
+          <p>Personalize your active fleet with camera snaps and custom workout defaults. View mileage distributions across Road, Trail, Racing, and Walking categories.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🔒</div>
+          <h3>100% On-Device Privacy</h3>
+          <p>Your HealthKit data never leaves your iPhone. Stored strictly in an encrypted on-device SQLite database. Zero advertising, zero tracking, zero data brokers.</p>
+        </div>
+      </div>
+
+      <!-- Privacy Banner -->
+      <div class="privacy-banner">
+        <h2>Privacy First. Always.</h2>
+        <p>We believe your personal health and fitness telemetry belongs to you alone. Shoe Garage has no advertising SDKs, does not collect analytics, and never sells your data.</p>
+        <a href="privacy.html" class="btn-secondary">Read Our HealthKit Privacy Policy →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Support Section -->
+  <section id="support" class="features" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-header">
+        <h2>Customer Support & FAQ</h2>
+        <p>Need help or have a feature request? We're here for you.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>How does workout syncing work?</h3>
+          <p>Shoe Garage uses Apple's native HealthKit observer query. When your Apple Watch or iPhone saves an outdoor or indoor running/walking workout, the app is gently woken to notify you and queue the run for quick assignment.</p>
+        </div>
+
+        <div class="card">
+          <h3>Can I switch between miles and kilometers?</h3>
+          <p>Yes. Shoe Garage includes a full dual-unit preference toggle in Settings that instantly updates all paces, wear rates, and distances across the entire app.</p>
+        </div>
+
+        <div class="card">
+          <h3>Contact Support</h3>
+          <p>Have questions, encountered a bug, or want to suggest a feature? Email our support team directly at <a href="mailto:support@shoegarage.app">support@shoegarage.app</a>. We typically respond within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 Shoe Garage. Built for dedicated runners.</div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="mailto:support@shoegarage.app">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

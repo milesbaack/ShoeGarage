@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Shoe Garage</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👟</text></svg>">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="logo">
+        <img src="app_icon.png" alt="Shoe Garage App Icon" style="width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--border);">
+        <span>Shoe Garage</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#support">Support</a>
+        <a href="privacy.html" style="color: var(--volt);">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="container doc-content">
+    <h1>Privacy Policy</h1>
+    <div class="doc-meta">Last Updated: October 17, 2026 • Effective Immediately</div>
+
+    <p>At <strong>Shoe Garage</strong>, your privacy is our foundational principle. We believe your athletic telemetry and workout history belong exclusively to you. This Privacy Policy explains how Shoe Garage accesses, processes, and protects your information.</p>
+
+    <h2>1. Apple HealthKit Data Compliance (Apple Guideline 5.1.3)</h2>
+    <p>Shoe Garage integrates with the Apple HealthKit framework to read completed workouts from your Apple Watch and iPhone.</p>
+    <ul>
+      <li><strong>Data Accessed:</strong> We request read-only access to completed running and walking workouts (specifically workout type, total distance, duration, and completion timestamp).</li>
+      <li><strong>Purpose of Use:</strong> This information is accessed solely to calculate cumulative mileage on your running shoes, forecast shoe lifespan, and populate your workout assignment queue.</li>
+      <li><strong>Strict Prohibition on Marketing & Third-Party Sharing:</strong> In accordance with Apple App Store Review Guidelines Section 5.1.3, Shoe Garage <strong>never uses HealthKit data for marketing, advertising, or use-based data mining</strong>, and will never sell, transfer, or disclose HealthKit data to advertising platforms, data brokers, or information resellers.</li>
+      <li><strong>No External Cloud Sync:</strong> All HealthKit data processed by Shoe Garage remains strictly on your device within an encrypted local SQLite database. We do not transmit or store your workout data on external remote servers.</li>
+    </ul>
+
+    <h2>2. Camera and Photo Library Access</h2>
+    <p>Shoe Garage requests permission to access your device's Camera and Photo Library:</p>
+    <ul>
+      <li><strong>Purpose:</strong> Used solely to allow you to photograph or select an image of your running shoes to personalize your shoe roster.</li>
+      <li><strong>Storage:</strong> Images are stored locally on your device in the app's sandboxed document storage. They are never uploaded to any remote server or analyzed for biometric data.</li>
+    </ul>
+
+    <h2>3. Local Storage and Data Security</h2>
+    <p>All shoe profiles, mileage counts, pricing data, and workout associations are persisted locally on your device using an isolated, sandboxed SQLite database. An App Group container is used exclusively to facilitate inter-process communication between the Flutter application and the iOS lock screen notification extension on your device.</p>
+
+    <h2>4. Analytics, Tracking, and Advertising</h2>
+    <p>Shoe Garage does <strong>not</strong> include any third-party advertising SDKs, tracking frameworks, or analytics services. We do not track you across other applications or websites, and we comply with Apple's App Tracking Transparency (ATT) framework.</p>
+
+    <h2>5. Data Retention and Deletion</h2>
+    <p>Because all data resides locally on your device, you have complete and permanent control over your data:</p>
+    <ul>
+      <li>You can delete individual shoes, workouts, or assignments directly within the app at any time.</li>
+      <li>Uninstalling the Shoe Garage application immediately and permanently removes all stored app data from your device.</li>
+    </ul>
+
+    <h2>6. Children's Privacy</h2>
+    <p>Shoe Garage does not knowingly collect or solicit personal information from children under the age of 13. Because our application collects no personal identifiers or remote data, it is safe for all age groups.</p>
+
+    <h2>7. Changes to This Privacy Policy</h2>
+    <p>We may update our Privacy Policy periodically to reflect changes in our app features or regulatory requirements. Any updates will be posted directly to this page with an updated "Last Updated" date.</p>
+
+    <h2>8. Contact Us</h2>
+    <p>If you have any questions or concerns regarding this Privacy Policy or your data, please contact our support team at:</p>
+    <p><strong>Email:</strong> <a href="mailto:support@shoegarage.app">support@shoegarage.app</a><br>
+    <strong>Website:</strong> <a href="https://shoegarage.app">https://shoegarage.app</a></p>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 Shoe Garage. Built for dedicated runners.</div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="mailto:support@shoegarage.app">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
