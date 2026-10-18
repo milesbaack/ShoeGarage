@@ -1,6 +1,7 @@
 import 'package:drift/native.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shoe_garage/core/constants/app_constants.dart';
 import 'package:shoe_garage/data/database/database.dart';
 import 'package:shoe_garage/data/providers.dart';
 import 'package:shoe_garage/main.dart';
@@ -8,6 +9,7 @@ import 'package:shoe_garage/main.dart';
 void main() {
   testWidgets('ShoeGarageApp loads and displays tabs and empty state', (WidgetTester tester) async {
     final testDb = AppDatabase(NativeDatabase.memory());
+    await testDb.setSetting(AppConstants.onboardingCompletedKey, 'true');
 
     await tester.pumpWidget(
       ProviderScope(

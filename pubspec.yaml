@@ -41,6 +41,8 @@ dependencies:
   flutter_riverpod: ^3.4.3
   uuid: ^4.6.0
   image_picker: ^1.2.4
+  url_launcher: ^6.3.3
+  in_app_purchase: ^3.3.1
 
 dev_dependencies:
   flutter_test:
@@ -54,6 +56,9 @@ dev_dependencies:
   flutter_lints: ^6.0.0
   drift_dev: ^2.35.1
   build_runner: ^2.15.1
+
+dependency_overrides:
+  in_app_purchase_storekit: 0.4.9
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -654,8 +654,13 @@
 * [x] `[TASK-02]` Generate all 15 icon sizes inside `ios/Runner/Assets.xcassets/AppIcon.appiconset/`.
 * [x] `[TASK-03]` Create dedicated website with `index.html`, `privacy.html`, `terms.html`, and `style.css` in `docs/`.
 * [x] `[TASK-04]` Update `PRODUCT_BUNDLE_IDENTIFIER` to `com.shoegarage.app` in `ios/Runner.xcodeproj/project.pbxproj`.
-* [x] `[TASK-05]` Verify clean compilation and launch on simulator (`com.shoegarage.app: 30855`).
-* [x] `[TEST-01]` Full Test Suite Regression: All 77 unit & widget tests pass (77/77 passed across 18 test files).
+* [x] `[TASK-05]` Wire live website URL (`https://milesbaack.github.io/ShoeGarage/`) across `AppConstants`, `docs/`, and `SettingsScreen` with `url_launcher`.
+* [x] `[TASK-06]` Implement native Apple StoreKit In-App Purchase Tip Jar (`TipJarService`, `TipJarSheet`) with 3 tiers ($1.99, $4.99, $9.99).
+* [x] `[TASK-07]` Build ultra-concise 5-slide interactive Onboarding Tour with bite-sized, skimmable copy (passive sync, zero servers / local SQLite, foam breakdown injury prevention, ultra-marathon injury & mental health origin story, and indie tip jar / review prompts presented prior to system permission sheets).
+* [x] `[TASK-08]` Verify clean compilation and launch on simulator (`com.shoegarage.app`).
+* [x] `[TASK-09]` Configure Apple Developer Team ID (`YH2WFP9537`) and automatic code signing across all Xcode build targets (`Profile`, `Debug`, `Release`, `RunnerTests`).
+* [x] `[TASK-10]` Verify release archive build (`xcodebuild archive`: Success).
+* [x] `[TEST-01]` Full Test Suite Regression: All 80 unit & widget tests pass (80/80 passed across 20 test files).
 * [x] `[TEST-02]` Static Analysis: `flutter analyze` reports 0 issues.
 
 ## 4. Quality Gates & Sign-Off
@@ -669,10 +674,10 @@
 ### Definition of Done (DoD)
 
 * [x] All `[TASK-XX]` implementation steps completed
-* [x] All `[TEST-XX]` unit and integration tests written and passing (77/77 passed across 18 test files)
+* [x] All `[TEST-XX]` unit and integration tests written and passing (80/80 passed across 20 test files)
 * [x] Type safety, linting, and error handling verified (`flutter analyze`: 0 issues)
-* [x] Native build verified (`flutter build ios --simulator --no-codesign`: Success in 13.7s)
-* [x] App installed and running on iPhone 16 Simulator under `com.shoegarage.app` (PID: 30855)
+* [x] Native build verified (`flutter build ios --simulator --no-codesign`: Success)
+* [x] App installed and running on iPhone 16 Simulator under `com.shoegarage.app`
 
 ---
 

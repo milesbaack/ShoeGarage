@@ -6,6 +6,8 @@ import 'services/health_kit_service.dart';
 import 'services/historical_sync_service.dart';
 import 'services/notification_service.dart';
 import 'services/shoe_photo_service.dart';
+import 'services/tip_jar_service.dart';
+import '../core/constants/app_constants.dart';
 import '../core/utils/rotation_analytics_calculator.dart';
 import '../core/utils/unit_formatter.dart';
 
@@ -123,4 +125,19 @@ final shoeProjectionProvider = Provider.family<ShoeProjection?, String>((ref, sh
   final analytics = ref.watch(rotationAnalyticsProvider);
   return analytics.shoeProjections.where((p) => p.shoe.id == shoeId).firstOrNull;
 });
+
+// Tip Jar Service Provider (StoreKit In-App Purchases)
+final tipJarServiceProvider = Provider<TipJarService>((ref) {
+  final service = TipJarService();
+  service.initialize();
+  ref.onDispose(() => service.dispose());
+  return service;
+});
+
+// Provider streaming whether the user has completed the onboarding tour
+final hasCompletedOnboardingProvider = StreamProvider<bool>((ref) {
+  final db = ref.watch(databaseProvider);
+  return db.watchSetting(AppConstants.onboardingCompletedKey).map((val) => val == 'true');
+});
+
 

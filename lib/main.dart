@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'core/constants/app_constants.dart';
 import 'core/theme/app_colors.dart';
 import 'core/theme/app_haptics.dart';
 import 'core/theme/app_theme.dart';
@@ -13,6 +14,7 @@ import 'features/garage/screens/nursing_home_screen.dart';
 import 'features/garage/screens/rotation_analytics_screen.dart';
 import 'features/garage/widgets/add_shoe_sheet.dart';
 import 'features/garage/widgets/shoe_card_widget.dart';
+import 'features/onboarding/screens/onboarding_screen.dart';
 import 'features/settings/screens/settings_screen.dart';
 
 void main() {
@@ -75,18 +77,42 @@ class _MainNavigationScreenState extends ConsumerState<MainNavigationScreen> wit
     // 1. Drain pending queue
     await ref.read(assignmentQueueProcessorProvider).processQueue();
 
-    // 2. Request Health permissions
+    // 2. Present Onboarding Tour on first launch before prompting for permissions
+    final completedOnboarding = await ref.read(databaseProvider).getSetting(AppConstants.onboardingCompletedKey);
+    if (completedOnboarding != 'true' && mounted) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              fullscreenDialog: true,
+              builder: (_) => OnboardingScreen(
+                onComplete: () {
+                  Navigator.of(context).pop();
+                  _requestPermissionsAndSync();
+                },
+              ),
+            ),
+          );
+        }
+      });
+    } else {
+      await _requestPermissionsAndSync();
+    }
+  }
+
+  Future<void> _requestPermissionsAndSync() async {
+    // Request Health permissions
     final healthKitService = ref.read(healthKitServiceProvider);
     final healthAvailable = await healthKitService.isHealthDataAvailable();
     if (healthAvailable) {
       await healthKitService.requestAuthorization();
     }
 
-    // 3. Request Notification permissions
+    // Request Notification permissions
     final notificationService = ref.read(notificationServiceProvider);
     await notificationService.requestPermissions();
 
-    // 4. Initial 30-Day HealthKit sync (unassigned runs route to Inbox, notifications suppressed)
+    // Initial 30-Day HealthKit sync (unassigned runs route to Inbox, notifications suppressed)
     if (healthAvailable) {
       await ref.read(historicalSyncServiceProvider).syncLast30Days();
     }

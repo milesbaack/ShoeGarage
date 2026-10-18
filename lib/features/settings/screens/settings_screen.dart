@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../../../core/constants/app_constants.dart';
 import '../../../core/utils/unit_formatter.dart';
 import '../../../data/database/database.dart';
 import '../../../data/providers.dart';
 import '../../garage/screens/rotation_analytics_screen.dart';
+import '../../onboarding/screens/onboarding_screen.dart';
+// import '../widgets/tip_jar_sheet.dart'; // Uncomment when re-enabling Tip Jar
 
 class SettingsScreen extends ConsumerStatefulWidget {
   final bool showAppBar;
@@ -53,6 +57,24 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           ),
         ),
       );
+    }
+  }
+
+  Future<void> _launchUrl(String urlString) async {
+    final uri = Uri.parse(urlString);
+    try {
+      final launched = await launchUrl(uri, mode: LaunchMode.externalApplication);
+      if (!launched && mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Could not open $urlString')),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Could not open link: $e')),
+        );
+      }
     }
   }
 
@@ -339,7 +361,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           const SizedBox(height: 16),
 
           // App Group & Diagnostics Section
-          _buildSectionHeader('STORAGE & ABOUT'),
+          _buildSectionHeader('STORAGE & DIAGNOSTICS'),
           Card(
             elevation: 0,
             color: Theme.of(context).colorScheme.surfaceContainerLow,
@@ -355,16 +377,87 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                     style: const TextStyle(fontWeight: FontWeight.w600),
                   ),
                 ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 16),
+
+          // About & Legal Section
+          _buildSectionHeader('ABOUT & LEGAL'),
+          Card(
+            elevation: 0,
+            color: Theme.of(context).colorScheme.surfaceContainerLow,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            child: Column(
+              children: [
+                ListTile(
+                  leading: const Icon(Icons.language, color: Colors.blue),
+                  title: const Text('Website'),
+                  subtitle: const Text('milesbaack.github.io/ShoeGarage'),
+                  trailing: const Icon(Icons.open_in_new, size: 18, color: Colors.grey),
+                  onTap: () => _launchUrl(AppConstants.websiteUrl),
+                ),
+                const Divider(height: 1),
+                ListTile(
+                  leading: const Icon(Icons.privacy_tip_outlined, color: Colors.green),
+                  title: const Text('Privacy Policy'),
+                  subtitle: const Text('HealthKit compliant • No ad tracking'),
+                  trailing: const Icon(Icons.open_in_new, size: 18, color: Colors.grey),
+                  onTap: () => _launchUrl(AppConstants.privacyPolicyUrl),
+                ),
+                const Divider(height: 1),
+                ListTile(
+                  leading: const Icon(Icons.gavel_outlined, color: Colors.amber),
+                  title: const Text('Terms of Service'),
+                  subtitle: const Text('EULA & non-medical mileage disclaimer'),
+                  trailing: const Icon(Icons.open_in_new, size: 18, color: Colors.grey),
+                  onTap: () => _launchUrl(AppConstants.termsUrl),
+                ),
+                const Divider(height: 1),
+                ListTile(
+                  leading: const Icon(Icons.support_agent_outlined, color: Colors.purple),
+                  title: const Text('Support & Feedback'),
+                  subtitle: const Text('FAQ & Contact team'),
+                  trailing: const Icon(Icons.open_in_new, size: 18, color: Colors.grey),
+                  onTap: () => _launchUrl(AppConstants.supportUrl),
+                ),
+                const Divider(height: 1),
+                /*
+                // NOTE: In-App Purchases / Tip Jar temporarily commented out for initial App Store submission.
+                // To re-enable: uncomment this ListTile.
+                ListTile(
+                  leading: const Icon(Icons.favorite_outline, color: Color(0xFFFFDD00)),
+                  title: const Text('Leave a Tip'),
+                  subtitle: const Text('Support indie development'),
+                  trailing: const Icon(Icons.chevron_right, size: 20, color: Colors.grey),
+                  onTap: () => TipJarSheet.show(context),
+                ),
+                const Divider(height: 1),
+                */
+                ListTile(
+                  leading: const Icon(Icons.school_outlined, color: Colors.cyan),
+                  title: const Text('App Tour & Privacy Guide'),
+                  subtitle: const Text('Replay onboarding walkthrough'),
+                  trailing: const Icon(Icons.chevron_right, size: 20, color: Colors.grey),
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        fullscreenDialog: true,
+                        builder: (_) => const OnboardingScreen(),
+                      ),
+                    );
+                  },
+                ),
                 const Divider(height: 1),
                 const ListTile(
                   leading: Icon(Icons.info_outline, color: Colors.blueGrey),
                   title: Text('Shoe Garage'),
-                  subtitle: Text('Version 1.0.0 (Build 1) • Offline-First Drift SQLite'),
+                  subtitle: Text('Version 1.0.0 (Build 1) • Performance Studio'),
                 ),
               ],
             ),
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 120),
         ],
       ),
     );
